@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .content{
+            background-color: #202020;
+            width: 29%;
+            margin-top: 80px;
+            box-shadow: 20px 20px 30px #888888;
+        }
+    
+        .display{
+            font-size: 55px;
+            background-color: #202020;
+            cursor: pointer;
+        }
+        .subDisplay{
+            font-size: 15px;
+            opacity: 60%;
+        }
+        .disable{
+            opacity: 55%;
+        }
+        .actIve:hover{
+
+            background-color: #323232;
+        }
+
+        .firstRow{
+            font-size: 13px;
+        }
+
+        .darkBg{
+            background-color: #323232;
+        }
+        .darkBg:hover{
+            background-color: #3b3b3b;
+        }
+
+
+        .lightBg{
+            background-color: #3b3b3b;
+        }
+        .lightBg:hover{
+            background-color: #323232;
+        }
+
+        .btnNumber{
+            padding: 16px 30px 16px 30px;
+        }
+
+        
+        .equalBg{
+            background-color: #0793ff;
+        }
+        .equalBg:hover{
+            background-color: #007edf;
+        }
+
+        .lastRow{
+            margin-bottom: 5px;
+        }
+        
+
+    </style>
+    
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="row ">
+            <di class="col-md-4"></di>
+            <di class="col-md-4 content rounded-3 ">
+
+                <div class="row text-white mt-4"> 
+
+                    <div class="col-8 fw-medium fs-5"> 
+                        <p> 
+                            <i class="fa fa-reorder"></i> 
+                           <span class="px-3">Standard</span>  
+                            <i class="fa fa-external-link"></i>
+                        </p> </div>
+                    <div class="col-4 text-end fw-medium fs-5"> <p><i class="fa fa-history "></i></p> </div>
+
+            
+                </div>
+
+                <div class="row text-white mb-3 text-end">
+                    <p class="mb-2 subDisplay">9 - 6 =</p>
+                    <textarea class="display text-end border border-0 text-light" id="displaY" rows="1" readonly></textarea>
+                </div>
+
+                <div class="row text-white text-center firstRow">
+                    <div class="col-sm-2"><p class="mb-1 py-1 disable">MC</p></div>
+                    <div class="col-sm-2"><p class="mb-1 py-1 disable">MR</p></div>
+                    <div class="col-sm-2 px-0"> <div class="col"><p class="mb-1 py-1 actIve"> M+</p></div></div>
+                    <div class="col-sm-2 px-0"> <div class="col"><p class="mb-1 py-1 actIve"> M-</p></div></div>
+                    <div class="col-sm-2 px-0"> <div class="col"><p class="mb-1 py-1 actIve"> MS</p></div></div>
+                    <div class="col-sm-2"><p class="mb-1 py-1 disable">M></p></div>
+                </div>
+
+                <div class="row text-white text-center px-1 mt-0">
+                    <div class="col-sm-3 px-0"><div class="col darkBg me-1 py-3 rounded">%</div></div>
+                    <div class="col-sm-3 px-0"><div class="col darkBg me-1 rounded"><button type="button" class="btn btnNumber border-0 text-white" onclick="displaY.innerHTML = ''">CE</button></div></div>
+                    <div class="col-sm-3 px-0"> <div class="col darkBg me-1 rounded"><button type="button" class="btn btnNumber border-0 text-white" onclick="displaY.innerHTML = ''">C</button></div></div>
+                    <div class="col-sm-3 px-0"><div class="col darkBg rounded"><button type="button" class="btn btnNumber border-0 text-white" onclick="deL()"><i class="fa fa-times-rectangle-o"></i> </button></div></div>
+                </div>
+
+                <div class="row text-white text-center px-1 pt-1">
+                    <div class="col-sm-3 px-0"> <div class="col darkBg me-1 py-3 rounded">1/x</div></div>
+                    <div class="col-sm-3 px-0"> <div class="col darkBg me-1 py-3 rounded">x²</div></div>
+                    <div class="col-sm-3 px-0"> <div class="col darkBg me-1 py-3 rounded">∛x</div></div>
+                    <div class="col-sm-3 px-0"> <div class="col darkBg rounded"><button type="button" class="btn btnNumber border-0 text-white" onclick="displaY.innerHTML += '/'">÷</button></div></div>
+                </div>
+
+                <div class="row text-white text-center px-1 pt-1">
+                    <div class="col-sm-3 px-0"> <div class="col lightBg me-1 rounded"><button type="button" class="btn btnNumber border-0 text-white" onclick="clicK(this)"  value="7">7</button></div></div>
+                    <div class="col-sm-3 px-0"> <div class="col lightBg me-1 rounded"><button type="button" class="btn btnNumber border-0 text-white" onclick="clicK(this)"  value="8">8</button></div></div>
+                    <div class="col-sm-3 px-0"> <div class="col lightBg me-1 rounded"><button type="button" class="btn btnNumber border-0 text-white" onclick="clicK(this)"  value="9">9</button></div></div>
+                    <div class="col-sm-3 px-0"> <div class="col darkBg rounded"><button type="button" class="btn btnNumber border-0 text-white" onclick="displaY.innerHTML += '*'">x</button></div></div>
+                </div>
+
+                <div class="row text-white text-center px-1 pt-1">
+                    <div class="col-sm-3 px-0"> <div class="col lightBg me-1 rounded"><button type="button" class="btn btnNumber border-0 text-white" onclick="clicK(this)"  value="4">4</button></div></div>
+                    <div class="col-sm-3 px-0"> <div class="col lightBg me-1 rounded"><button type="button" class="btn btnNumber border-0 text-white" onclick="clicK(this)"  value="5">5</button></div></div>
+                    <div class="col-sm-3 px-0"> <div class="col lightBg me-1 rounded"><button type="button" class="btn btnNumber border-0 text-white" onclick="clicK(this)"  value="6">6</button></div></div>
+                    <div class="col-sm-3 px-0"> <div class="col darkBg rounded"><button type="button" class="btn btnNumber border-0 text-white" onclick="clicK(this)">-</button></div></div>
+                </div>
+
+                <div class="row text-white text-center px-1 pt-1">
+                    <div class="col-sm-3 px-0"> <div class="col lightBg me-1 rounded"><button type="button" class="btn btnNumber border-0 text-white" onclick="clicK(this)"  value="1">1</button></div></div>
+                    <div class="col-sm-3 px-0"> <div class="col lightBg me-1 rounded"><button type="button" class="btn btnNumber border-0 text-white" onclick="clicK(this)"  value="2">2</button></div></div>
+                    <div class="col-sm-3 px-0"> <div class="col lightBg me-1 rounded"><button type="button" class="btn btnNumber border-0 text-white" onclick="clicK(this)"  value="3">3</button></div></div>
+                    <div class="col-sm-3 px-0"> <div class="col darkBg rounded"><button type="button" class="btn btnNumber border-0 text-white" onclick="clicK(this)">+</button></div></div>
+                </div>
+
+                <div class="row text-white text-center px-1 pt-1 lastRow">
+                    <div class="col-sm-3 px-0"> <div class="col lightBg me-1 py-3 rounded">+/-</div></div>
+                    <div class="col-sm-3 px-0"> <div class="col lightBg me-1 rounded"><button type="button" class="btn btnNumber border-0 text-white" onclick="clicK(this)"  value="0">0</button></div></div>
+                    <div class="col-sm-3 px-0"> <div class="col lightBg me-1 rounded"><button type="button" class="btn btnNumber border-0 text-white" onclick="clicK(this)" >.</button></div></div>
+                    <div class="col-sm-3 px-0"> <div class="col equalBg rounded text-dark"><button type="button" class="btn btnNumber border-0 text-white" onclick="displaY.innerHTML = eval(displaY.innerHTML)" >=</button></div></div> 
+                </div>
+
+
+            </div>
+            <di class="col-md-4"></di>
+
+        </div>
+    </div>
+
+    <script>
+    
+    function clicK(element){
+
+        document.getElementById("displaY").innerHTML += element.innerHTML
+
+    // let curDisplay = parseFloat(document.getElementById("displaY").innerHTML += element.innerHTML);
+    //  alert(curDisplay.toLocaleString('en-US'));
+    // document.getElementById("displaY").innerHTML = curDisplay.toLocaleString('en-US');
+     
+    }
+
+    function deL(){
+       let toDel = document.getElementById("displaY").innerHTML;
+       document.getElementById("displaY").innerHTML =toDel.slice(0,-1);
+    }
+
+
+      
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+</body>
+</html>
