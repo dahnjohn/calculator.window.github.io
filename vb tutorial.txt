@@ -1,0 +1,60 @@
+https://www.youtube.com/watch?v=-B7GObvvems
+https://www.youtube.com/watch?v=BxjY1kIPy_4 - fetch data
+https://www.youtube.com/watch?v=RhCzj5q6uqA - calculator
+
+
+
+Class Form1
+ Dim firstNumber As Decimal
+ Dim secondNumber As Decimal
+ Dim operations As Integer
+ Dim operatorSelector As Boolean = False
+
+
+Button1_Click Number1-9
+If TextBox1.Text <> "0" Then
+            TextBox1.Text += "1"
+        Else
+            TextBox1.Text = "1"
+        End If
+
+Zero button
+ If TextBox1.Text <> "0" Then
+            TextBox1.Text += "0"
+        End If
+
+Dot button
+If TextBox1.Text <> "." Then
+            TextBox1.Text += "."
+        End If
+
+Clear Button
+TextBox1.Text = "0"
+
++ button(same lng sa ibang arithmetic)
+     firstNumber = TextBox1.Text
+        TextBox1.Text = "0"
+        operatorSelector = True
+        operations = 1 ' = +
+
+Equal button
+ If operatorSelector = True Then
+            secondNumber = TextBox1.Text
+
+            If operations = 1 Then
+                TextBox1.Text = firstNumber + secondNumber
+            ElseIf operations = 2 Then
+                TextBox1.Text = firstNumber - secondNumber
+            ElseIf operations = 3 Then
+                TextBox1.Text = firstNumber * secondNumber
+            Else
+                If secondNumber = 0 Then
+                    TextBox1.Text = "Error!"
+                Else
+                    TextBox1.Text = firstNumber / secondNumber
+                End If
+
+            End If
+        End If
+        operatorSelector = False
+
